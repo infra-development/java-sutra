@@ -6,13 +6,42 @@ public class MaximumSumOfArray {
         int sum1 = maximumSumSimple(arr);
         int sum2 = maximumSumImproved(arr);
         int sum3 = maximumSumBest(arr);
-        System.out.println("Maximum sum : "+sum1);
-        System.out.println("Maximum sum : "+sum2);
-        System.out.println("Maximum sum : "+sum3);
+        int sum4 = maximumSumBestOther(arr);
+        System.out.println("Maximum sum simple way O(n^3): "+sum1);
+        System.out.println("Maximum sum improved O(n^2): "+sum2);
+        System.out.println("Maximum sum best way O(n): "+sum3);
+        System.out.println("Maximum sum best way O(n): "+sum4);
     }
 
     private static int maximumSumBest(int[] arr) {
-        return 0;
+        int currentMax = arr[0];
+        int maxSoFar = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            if (currentMax + arr[i] > arr[i]) {
+                currentMax  = currentMax + arr[i];
+            } else {
+                currentMax = arr[i];
+            }
+
+            if (currentMax > maxSoFar) {
+                maxSoFar = currentMax;
+            }
+        }
+        return maxSoFar;
+    }
+
+    private static int maximumSumBestOther(int[] arr) {
+        int currentMax = arr[0];
+        int maxSoFar = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            currentMax = Math.max(currentMax + arr[i], arr[i]);
+            if (currentMax > maxSoFar) {
+                maxSoFar = currentMax;
+            }
+        }
+        return maxSoFar;
     }
 
     private static int maximumSumImproved(int[] arr) {

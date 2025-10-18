@@ -5,8 +5,8 @@ public class RemoveDuplicatesFromSortedArrayInPlace {
         int[] arr = {1, 1, 2, 2, 3, 4, 4, 5,5,5,5,5};
         int[] newArr = removeDuplicates(arr);
 //        System.out.println("Length of array after removing duplicates: " + length);
-        for (int i = 0; i < newArr.length; i++) {
-            System.out.print(newArr[i] + " ");
+        for (int j : newArr) {
+            System.out.print(j + " ");
         }
     }
 
